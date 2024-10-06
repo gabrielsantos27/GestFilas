@@ -1,0 +1,45 @@
+﻿@using ProjetoBacharelatoFilas.Helpers.Enum
+@model Servico
+
+@{
+    ViewData["Title"] = "Editar Serviço";
+}
+
+
+<form asp-action="Editar" method="post">
+    <div class="card card-primary">
+        <div class="card-header">
+            <h3 class="card-title">@ViewData["Title"]</h3>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="NomeServico">Nome do Serviço</label>
+                <input type="text" asp-for="NomeServico" class="form-control form-control-border" id="exampleInputBorder" placeholder="">
+                <span asp-validation-for="NomeServico" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="NomeServico">Estado</label>
+                <select asp-for="Estado" class="form-control form-control-border" id="exampleInputBorder">
+                    @foreach (var estado in ViewData["Estados"] as Estado[])
+                    {
+                        <option value="@((int)estado)">
+                            @Html.DisplayFor(modelItem => estado)
+                        </option>
+                    }
+                </select>
+                <span asp-validation-for="Estado" class="text-danger"></span>
+            </div>
+
+            <div style="margin-bottom:5px;"></div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Guardar" class="btn btn-success" />
+                    <a asp-action="Listagem" class="btn btn-info">Retornar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

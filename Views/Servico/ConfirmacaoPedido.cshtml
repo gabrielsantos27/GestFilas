@@ -1,0 +1,91 @@
+﻿@using ProjetoBacharelatoFilas.Consts
+@model PedidoServico
+
+<section class="service_section layout_padding">
+    <div class="service_container">
+        <div class="container ">
+            <div class="heading_container heading_center">
+                <h2>
+                    Confirmação do <span>Serviço</span> Solicitado !
+                </h2>
+            </div>
+
+            <div class="container mt-0">
+                <div class="row">
+                    <div class="col-md-12 mb-2 ">
+                        <div class="box border rounded p-3 h-90 ">
+                            <div class="img-box mb-3 text-center">
+                                <img src="~/img/w1.png" alt="" class="img-fluid">
+                            </div>
+
+                            <h5>
+                                <span class="text-black">Nome do Estudante</span>: <span class="text-primary"> @Model.NomeCompleto </span>
+                            </h5>
+                            @*  <h5>
+                            <span class="text-black">Bilhete de Identidade</span>: <span class="text-primary"> @Model.NumeroIdentidade </span>
+                            </h5>
+                            <h5>
+                            <span class="text-black">Curso</span>: <span class="text-primary"> @Model.Curso </span>
+                            </h5>
+                            *@
+                            <h5>
+                                <span class="text-black">Serviço</span>: <span class="text-primary"> @Model.Servico.NomeServico </span>
+                            </h5>
+                            <h4>
+                                <span class="text-black">Senha</span>: <span class="text-success alert-warning"> @Model.SenhaPedido </span>
+                            </h4>
+                            <h5>
+                                <span class="text-black">Data</span>: <span class="text-primary"> @Model.DataCriacao.ManipularHora() </span>
+                            </h5>
+
+                            <div class="btn-box mt-3">
+                                <a asp-action="Index" asp-controller="Servico" class="btn btn-primary">
+                                    Voltar
+                                </a>
+                            </div>
+
+                            <div class="btn-box mt-3">
+                                <a asp-action="PdfGerar" asp-controller="Servico" target="_blank" asp-route-id="@Model.Id" class="btn btn-primary">
+                                    Guardar em PDF
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+    </div>
+</section>
+<style>
+
+    .box {
+        background-color: #f8f9fa; /* Fundo claro */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra leve */
+        transition: transform 0.2s; /* Transição suave */
+    }
+
+    /*  .box:hover {
+                transform: translateY(-5px); /* Efeito de elevação ao passar o mouse */
+    }
+
+    */
+
+    .img-box img {
+        max-height: 150px; /* Altura máxima para a imagem */
+    }
+
+    .detail-box h5 {
+        font-size: 1.25rem; /* Tamanho da fonte do título */
+    }
+
+    .btn-box .btn {
+        width: 100%; /* Botão ocupa toda a largura */
+    }
+
+</style>
+
+

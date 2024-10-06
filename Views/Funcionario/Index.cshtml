@@ -1,0 +1,88 @@
+﻿@using ProjetoBacharelatoFilas.Consts
+@model IEnumerable<Funcionario>
+
+<style>
+    table {
+        width: 80% !important;
+    }
+
+    .dataTables_length, .dataTables_info {
+        margin-left: 10vw !important;
+    }
+
+    #myTable_filter, #myTable_paginate {
+        margin-right: 10vw !important;
+    }
+
+    #myTable_paginate, .dataTables_info {
+        margin-bottom: 5vh !important;
+    }
+
+    .ps-1{
+     margin-left:2vw !important; 
+    }
+</style>
+ 
+
+<div style="margin-bottom:40px;">
+    <div class="row" style="position:relative;top:20px;">
+        <div class="col-md-12">
+            <div class="container">
+                <h2 class="text-center">Listagem dos Funcionarios</h2>
+                <div class="pull-left">
+                    <a asp-action="Criar" class="btn btn-success ps-1">
+                        <span class="fa fa-plus" style="padding:2px;">  Novo Funcionário</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<table id="myTable" class="display">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Email</th>
+            <th scope="col">Telefone</th>
+            <th scope="col">Bilhete de Identidade</th>
+            <th scope="col">Acções</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th scope="row">@item.Id</th>
+                <td>@item.NomeCompleto</td>
+                <td>@item.Email</td>
+                <td>@item.Telefone</td>
+                <td>@item.NumeroIdentidade</td>
+                <td>
+                    <a asp-action="Editar" asp-route-funcionarioId="@item.Id" title="Atender" class="btn btn-warning">
+                        <span class="fas fa-edit">Editar</span>
+                    </a>
+                    <a asp-action="Eliminar" asp-route-funcionarioId="@item.Id" title="Atender" class="btn btn-danger">
+                        <span class="fas fa-edit">Eliminar</span>
+                    </a>
+                   
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            $('#myTable').DataTable({
+               // "pageLength": 5,
+                language: {
+                    url: '//cdn.datatables.net/plug-ins/1.13.5/i18n/pt-PT.json'
+                }
+            });
+        });
+    </script>
+}

@@ -1,0 +1,59 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing:border-box;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+html {
+  font-size: 14px;
+ 
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+   
+}
+
+/* Efeito nos links da nav*/
+ul li a:not(.btn):after {
+    content: "";
+    background-color: #dbba3a;
+    height: 3px;
+    width: 0%;
+    display: block;
+    transition: 0.5s;
+    margin: 0 auto;
+}
+
+ul li a:hover::after {
+    width: 100%;
+}
+
+
+@media (max-width: 559px) {
+    ul{
+       text-align:center;
+        justify-content:center;
+    }
+}
+
+@media (max-width: 559px) {
+    ul li a:hover::after {
+       width:25%;
+    }
+}
+
+
